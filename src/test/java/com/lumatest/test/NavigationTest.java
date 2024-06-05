@@ -32,7 +32,16 @@ public class NavigationTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
-    @Test(dataProvider = "navigationData", dataProviderClass = TestData.class)
+    @Test(
+            description = "TC-02 Top Menu Navigation",
+            dataProvider = "navigationData",
+            dataProviderClass = TestData.class
+    )
+    @Story("Navigation")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("To verify that the top menu navigation on the website functions correctly by ensuring that " +
+            "clicking on menu items directs the user to the expected URL with the expected title.")
+    @Link(TestData.BASE_URL)
     public void testNavigationMenu(String baseURL, By navbarMenu, String expectedURL, String expectedTitle) {
 
         Allure.step("Open Base URL");
