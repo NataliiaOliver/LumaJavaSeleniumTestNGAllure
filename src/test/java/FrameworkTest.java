@@ -2,7 +2,7 @@ import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-public class NoDriverTest {
+public class FrameworkTest {
 
     @Test
     public void testPass() {

@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 
 public class NavigationTest extends BaseTest {
 
-    @Test(description = "TC-01 Open Base URL")
-    @Tag("smoke")
+    @Test(description = "TC-01 Open Base URL", groups = {"Smoke", "Regression"})
+    @Tags({@Tag("Smoke"), @Tag("Regression")})
     @Story("Navigation")
     @Severity(SeverityLevel.BLOCKER)
     @Description("To verify that navigating to the base URL of the website opens the correct page by checking " +
@@ -40,9 +40,10 @@ public class NavigationTest extends BaseTest {
     @Test(
             description = "TC-02 Top Menu Navigation",
             dataProvider = "navigationData",
-            dataProviderClass = TestData.class
+            dataProviderClass = TestData.class,
+            groups = {"Smoke", "Regression"}
     )
-    @Tags({@Tag("smoke"), @Tag("navigation")})
+    @Tags({@Tag("Smoke"), @Tag("Regression")})
     @Story("Navigation")
     @Severity(SeverityLevel.CRITICAL)
     @Description("To verify that the top menu navigation on the website functions correctly by ensuring that " +
