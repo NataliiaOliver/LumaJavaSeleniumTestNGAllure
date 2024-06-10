@@ -70,13 +70,8 @@ public class DriverUtils {
         if (driver != null) {
             driver.quit();
         }
-        FirefoxDriver firefoxDriver = new FirefoxDriver(firefoxOptions);
-//        firefoxDriver.executeCdpCommand("Network.enable", Map.of());
-//        firefoxDriver.executeCdpCommand(
-//                "Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9"))
-//        );
 
-        return firefoxDriver;
+        return new FirefoxDriver(firefoxOptions);
     }
 
     private static WebDriver createEdgeDriver(WebDriver driver) {
