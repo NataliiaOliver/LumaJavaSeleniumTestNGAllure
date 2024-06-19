@@ -6,9 +6,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class DriverUtils {
@@ -29,6 +29,13 @@ public class DriverUtils {
         chromeOptions.addArguments("--allow-running-insecure-content");
         chromeOptions.addArguments("--ignore-certificate-errors");
 
+        Map<String, Object> prefs = new HashMap<String, Object>();
+        prefs.put("download.default_directory", "./src/test/resources");
+        prefs.put("download.prompt_for_download", false);
+        prefs.put("download.directory_upgrade", true);
+        prefs.put( "safebrowsing.enabled", true);
+        chromeOptions.setExperimentalOption("prefs", prefs);
+
         firefoxOptions = new FirefoxOptions();
         firefoxOptions.addArguments("--incognito");
         firefoxOptions.addArguments("--headless");
@@ -37,52 +44,42 @@ public class DriverUtils {
         firefoxOptions.addArguments("--no-sandbox");
         firefoxOptions.addArguments("--disable-dev-shm-usage");
 //        firefoxOptions.addArguments("--disable-web-security");
-//        firefoxOptions.addArguments("--allow-running-insecure-content");
-//        firefoxOptions.addArguments("--ignore-certificate-errors");
-//        firefoxOptions.setLogLevel(FirefoxDriverLogLevel.TRACE);
-//        firefoxOptions.addPreference("remote.log.truncate", false);
-//        firefoxOptions.addPreference("extensions.logging.enabled", true);
-//        firefoxOptions.setCapability("acceptInsecureCerts", true);
 
         edgeOptions = new EdgeOptions();
-        edgeOptions.addArguments("--incognito");
-        edgeOptions.addArguments("--headless");
-        edgeOptions.addArguments("--window-size=1920,1080");
-        edgeOptions.addArguments("--disable-gpu");
-        edgeOptions.addArguments("--no-sandbox");
-        edgeOptions.addArguments("--disable-dev-shm-usage");
-        edgeOptions.addArguments("--disable-web-security");
-        edgeOptions.addArguments("--allow-running-insecure-content");
-        edgeOptions.addArguments("--ignore-certificate-errors");
+//        edgeOptions.addArguments("--incognito");
+//        edgeOptions.addArguments("--headless");
+//        edgeOptions.addArguments("--window-size=1920,1080");
+//        edgeOptions.addArguments("--disable-gpu");
+//        edgeOptions.addArguments("--no-sandbox");
+//        edgeOptions.addArguments("--disable-dev-shm-usage");
+//        edgeOptions.addArguments("--disable-web-security");
     }
 
     private static WebDriver createChromeDriver(WebDriver driver) {
-        if (driver != null) {
+        if (driver == null) {
+            return new ChromeDriver(chromeOptions);
+        } else {
             driver.quit();
+            return new ChromeDriver(chromeOptions);
         }
-        ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
-        chromeDriver.executeCdpCommand("Network.enable", Map.of());
-        chromeDriver.executeCdpCommand(
-                "Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9"))
-        );
-
-        return chromeDriver;
     }
 
     private static WebDriver createFirefoxDriver(WebDriver driver) {
-        if (driver != null) {
+        if (driver == null) {
+            return new FirefoxDriver(firefoxOptions);
+        } else {
             driver.quit();
+            return new FirefoxDriver(firefoxOptions);
         }
-
-        return new FirefoxDriver(firefoxOptions);
     }
 
     private static WebDriver createEdgeDriver(WebDriver driver) {
-        if (driver != null) {
+        if (driver == null) {
+            return new EdgeDriver(edgeOptions);
+        } else {
             driver.quit();
+            return new EdgeDriver(edgeOptions);
         }
-
-        return new EdgeDriver(edgeOptions);
     }
 
     public static WebDriver createDriver(String browser, WebDriver driver) {
