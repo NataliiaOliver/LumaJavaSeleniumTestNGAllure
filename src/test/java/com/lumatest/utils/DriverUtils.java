@@ -3,12 +3,11 @@ package com.lumatest.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.testng.Reporter;
 
 import java.util.Map;
 
@@ -40,6 +39,10 @@ public class DriverUtils {
         firefoxOptions.addArguments("--disable-web-security");
         firefoxOptions.addArguments("--allow-running-insecure-content");
         firefoxOptions.addArguments("--ignore-certificate-errors");
+        firefoxOptions.setLogLevel(FirefoxDriverLogLevel.TRACE);
+        firefoxOptions.addPreference("remote.log.truncate", false);
+        firefoxOptions.addPreference("extensions.logging.enabled", true);
+        firefoxOptions.setCapability("acceptInsecureCerts", true);
 
         edgeOptions = new EdgeOptions();
         edgeOptions.addArguments("--incognito");
@@ -78,13 +81,8 @@ public class DriverUtils {
         if (driver != null) {
             driver.quit();
         }
-        EdgeDriver edgeDriver = new EdgeDriver(edgeOptions);
-        edgeDriver.executeCdpCommand("Network.enable", Map.of());
-        edgeDriver.executeCdpCommand(
-                "Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9"))
-        );
 
-        return edgeDriver;
+        return new EdgeDriver(edgeOptions);
     }
 
     public static WebDriver createDriver(String browser, WebDriver driver) {
