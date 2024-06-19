@@ -2,7 +2,13 @@ package com.lumatest.test;
 
 import com.lumatest.base.BaseTest;
 import com.lumatest.data.TestData;
-import io.qameta.allure.*;
+import io.qameta.allure.Link;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Owner;
 import io.qameta.allure.testng.Tag;
 import io.qameta.allure.testng.Tags;
 import org.openqa.selenium.By;

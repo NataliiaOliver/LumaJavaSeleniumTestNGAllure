@@ -24,7 +24,7 @@ public abstract class BaseTest {
     }
 
     @Parameters("browser")
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     protected void setupDriver(@Optional("chrome") String browser, ITestContext context, ITestResult result) {
         Reporter.log("_________________________________________________________________", true);
 

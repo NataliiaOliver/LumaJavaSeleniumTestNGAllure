@@ -9,16 +9,16 @@
         </classes>
     </test>
 
-    <test name="FirefoxTest" verbose="10">
-        <parameter name="browser" value="firefox"/>
+    <test name="EdgeTest" verbose="10">
+        <parameter name="browser" value="edge"/>
         <classes>
             <class name="com.lumatest.test.NavigationTest"/>
             <class name="com.lumatest.test.ProductPageTest"/>
         </classes>
     </test>
 
-    <test name="EdgeTest" verbose="10">
-        <parameter name="browser" value="edge"/>
+    <test name = "FirefoxTest" verbose="10">
+        <parameter name="browser" value="firefox"/>
         <classes>
             <class name="com.lumatest.test.NavigationTest"/>
             <class name="com.lumatest.test.ProductPageTest"/>
