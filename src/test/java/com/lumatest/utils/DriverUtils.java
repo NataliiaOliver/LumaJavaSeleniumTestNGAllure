@@ -36,13 +36,13 @@ public class DriverUtils {
         firefoxOptions.addArguments("--disable-gpu");
         firefoxOptions.addArguments("--no-sandbox");
         firefoxOptions.addArguments("--disable-dev-shm-usage");
-        firefoxOptions.addArguments("--disable-web-security");
-        firefoxOptions.addArguments("--allow-running-insecure-content");
-        firefoxOptions.addArguments("--ignore-certificate-errors");
-        firefoxOptions.setLogLevel(FirefoxDriverLogLevel.TRACE);
-        firefoxOptions.addPreference("remote.log.truncate", false);
-        firefoxOptions.addPreference("extensions.logging.enabled", true);
-        firefoxOptions.setCapability("acceptInsecureCerts", true);
+//        firefoxOptions.addArguments("--disable-web-security");
+//        firefoxOptions.addArguments("--allow-running-insecure-content");
+//        firefoxOptions.addArguments("--ignore-certificate-errors");
+//        firefoxOptions.setLogLevel(FirefoxDriverLogLevel.TRACE);
+//        firefoxOptions.addPreference("remote.log.truncate", false);
+//        firefoxOptions.addPreference("extensions.logging.enabled", true);
+//        firefoxOptions.setCapability("acceptInsecureCerts", true);
 
         edgeOptions = new EdgeOptions();
         edgeOptions.addArguments("--incognito");
