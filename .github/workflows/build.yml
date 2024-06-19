@@ -1,4 +1,3 @@
-#Cross Platform, Cross Browser test Run in parallel execution
 name: Java CI with Maven
 on:
   pull_request:
