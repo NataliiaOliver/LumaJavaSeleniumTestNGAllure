@@ -2,7 +2,13 @@ package com.lumatest.test;
 
 import com.lumatest.base.BaseTest;
 import com.lumatest.data.TestData;
-import io.qameta.allure.*;
+import io.qameta.allure.Link;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Owner;
 import io.qameta.allure.testng.Tag;
 import io.qameta.allure.testng.Tags;
 import org.openqa.selenium.By;
@@ -11,8 +17,9 @@ import org.testng.annotations.Test;
 
 public class NavigationTest extends BaseTest {
 
-    @Test(description = "TC-01 Open Base URL",
-            groups = {"Smoke", "Regression"},
+    @Test(
+            description = "TC-01 Open Base URL",
+            groups = {"smoke", "regression"},
             testName = "NAVIGATION | Open Base URL"
     )
     @Tags({@Tag("Smoke"), @Tag("Regression")})
@@ -44,7 +51,7 @@ public class NavigationTest extends BaseTest {
             description = "TC-02 Top Menu Navigation",
             dataProvider = "navigationData",
             dataProviderClass = TestData.class,
-            groups = {"Smoke", "Regression"},
+            groups = {"smoke", "regression"},
             testName = "NAVIGATION | Navigate to Top Menu"
     )
     @Tags({@Tag("Smoke"), @Tag("Regression")})
